@@ -26,7 +26,7 @@ public class TaskScheduler
             }
             catch (InterruptedException e)
             {
-                e.printStackTrace ();
+                System.out.println (e.getMessage ());
             }
         }
     }
@@ -35,10 +35,9 @@ public class TaskScheduler
     {
         ArrayList <String> finishedTasks = new ArrayList <> ();
 
-        // Sort tasks based on processing time (descending order)
-        tasks.sort ((t1, t2) -> t2.processingTime - t1.processingTime);
+        tasks.sort ((t1, t2) -> t2.processingTime - t1.processingTime); //sort tasks based on processing time
 
-        // Execute tasks
+        //execute tasks from the highest required time to the lowest required time
         for (Task task : tasks)
         {
             Thread thread = new Thread (task);

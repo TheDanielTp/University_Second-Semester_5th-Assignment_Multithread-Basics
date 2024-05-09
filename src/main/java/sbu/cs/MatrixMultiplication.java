@@ -3,9 +3,9 @@ package sbu.cs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatrixMultiplication {
+public class MatrixMultiplication
+{
 
-    // You are allowed to change all code in the BlockMultiplier class
     public static class BlockMultiplier implements Runnable
     {
         List <List <Integer>> matrixA;
@@ -50,11 +50,6 @@ public class MatrixMultiplication {
         }
     }
 
-    /*
-    Matrix A is of the form p x q
-    Matrix B is of the form q x r
-    both p and r are even numbers
-    */
     public static List <List <Integer>> ParallelizeMatMul (List <List <Integer>> matrix_A, List <List <Integer>> matrix_B)
     {
         int p = matrix_A.size ();
@@ -102,7 +97,7 @@ public class MatrixMultiplication {
         {
             try
             {
-                thread.join ();
+                thread.join (); //add the current thread to running threads
             }
             catch (InterruptedException e)
             {
@@ -115,27 +110,26 @@ public class MatrixMultiplication {
 
     public static void main (String[] args)
     {
-        List<List<Integer>> matrix_A = new ArrayList<>();
-        List<List<Integer>> matrix_B = new ArrayList<>();
+        List <List <Integer>> matrix_A = new ArrayList <> ();
+        List <List <Integer>> matrix_B = new ArrayList <> ();
 
         //initialize matrix A
-        matrix_A.add(List.of(1, 2, 3, 4));
-        matrix_A.add(List.of(5, 6, 7, 8));
-        matrix_A.add(List.of(1, 2, 3, 4));
-        matrix_A.add(List.of(5, 6, 7, 8));
+        matrix_A.add (List.of (1, 2, 3, 4));
+        matrix_A.add (List.of (5, 6, 7, 8));
+        matrix_A.add (List.of (1, 2, 3, 4));
+        matrix_A.add (List.of (5, 6, 7, 8));
 
         //initialize matrix B
-        matrix_B.add(List.of(1, 4, 1, 4));
-        matrix_B.add(List.of(2, 3, 2, 3));
-        matrix_B.add(List.of(3, 2, 3, 2));
-        matrix_B.add(List.of(4, 1, 4, 1));
+        matrix_B.add (List.of (1, 4, 1, 4));
+        matrix_B.add (List.of (2, 3, 2, 3));
+        matrix_B.add (List.of (3, 2, 3, 2));
+        matrix_B.add (List.of (4, 1, 4, 1));
 
-        //perform matrix multiplication
-        List<List<Integer>> result = MatrixMultiplication.ParallelizeMatMul(matrix_A, matrix_B);
+        List <List <Integer>> result = MatrixMultiplication.ParallelizeMatMul (matrix_A, matrix_B); //perform matrix multiplication
 
         //print the result matrix
-        System.out.println("Result Matrix:");
-        for (List<Integer> row : result)
+        System.out.println ("Result Matrix:");
+        for (List <Integer> row : result)
         {
             System.out.println (row);
         }
