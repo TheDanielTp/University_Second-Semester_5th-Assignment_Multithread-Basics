@@ -113,7 +113,31 @@ public class MatrixMultiplication {
         return tempMatrixProduct;
     }
 
-    public static void main(String[] args) {
-        // Test your code here
+    public static void main (String[] args)
+    {
+        List<List<Integer>> matrix_A = new ArrayList<>();
+        List<List<Integer>> matrix_B = new ArrayList<>();
+
+        //initialize matrix A
+        matrix_A.add(List.of(1, 2, 3, 4));
+        matrix_A.add(List.of(5, 6, 7, 8));
+        matrix_A.add(List.of(1, 2, 3, 4));
+        matrix_A.add(List.of(5, 6, 7, 8));
+
+        //initialize matrix B
+        matrix_B.add(List.of(1, 4, 1, 4));
+        matrix_B.add(List.of(2, 3, 2, 3));
+        matrix_B.add(List.of(3, 2, 3, 2));
+        matrix_B.add(List.of(4, 1, 4, 1));
+
+        //perform matrix multiplication
+        List<List<Integer>> result = MatrixMultiplication.ParallelizeMatMul(matrix_A, matrix_B);
+
+        //print the result matrix
+        System.out.println("Result Matrix:");
+        for (List<Integer> row : result)
+        {
+            System.out.println (row);
+        }
     }
 }

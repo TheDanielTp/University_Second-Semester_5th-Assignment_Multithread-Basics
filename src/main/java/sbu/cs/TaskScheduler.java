@@ -59,6 +59,16 @@ public class TaskScheduler
 
     public static void main (String[] args)
     {
+        ArrayList <Task> tasks = new ArrayList <> (); //create an array list of tasks
 
+        //add tasks to the array list
+        tasks.add (new Task ("First Task", 1000));
+        tasks.add (new Task ("Second Task", 2000));
+        tasks.add (new Task ("Third Task", 3000));
+        tasks.add (new Task ("Fourth Task", 4000));
+        tasks.add (new Task ("Fifth Task", 5000));
+
+        ArrayList <String> finishedTasks = doTasks (tasks); //execute tasks and add their names to the array list
+        System.out.println ("Finished tasks: " + finishedTasks); //print all the executed tasks names
     }
 }
