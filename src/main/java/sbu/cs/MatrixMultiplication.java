@@ -128,6 +128,20 @@ public class MatrixMultiplication
         List <List <Integer>> result = MatrixMultiplication.ParallelizeMatMul (matrix_A, matrix_B); //perform matrix multiplication
 
         //print the result matrix
+        System.out.println ("First Matrix:");
+        for (List <Integer> row : matrix_A)
+        {
+            System.out.println (row);
+        }
+        System.out.println ();
+
+        System.out.println ("Second Matrix:");
+        for (List <Integer> row : matrix_B)
+        {
+            System.out.println (row);
+        }
+        System.out.println ();
+
         System.out.println ("Result Matrix:");
         for (List <Integer> row : result)
         {

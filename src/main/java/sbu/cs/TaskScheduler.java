@@ -22,7 +22,7 @@ public class TaskScheduler
             {
                 System.out.println ("Executing task: " + taskName);
                 Thread.sleep (processingTime);
-                System.out.println ("Completed task: " + taskName);
+                System.out.println ("Completed task: " + taskName + "\n");
             }
             catch (InterruptedException e)
             {
