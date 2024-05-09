@@ -7,17 +7,45 @@ public class MatrixMultiplication {
     // You are allowed to change all code in the BlockMultiplier class
     public static class BlockMultiplier implements Runnable
     {
-        List<List<Integer>> tempMatrixProduct;
-        public BlockMultiplier() {
-            // TODO
+        List <List <Integer>> matrixA;
+        List <List <Integer>> matrixB;
+        List <List <Integer>> tempMatrix;
+
+        int startRow;
+        int endRow;
+        int startCol;
+        int endCol;
+
+        public BlockMultiplier (List <List <Integer>> matrixA, List <List <Integer>> matrixB,
+                                List <List <Integer>> tempMatrix,
+                                int startRow, int endRow, int startCol, int endCol)
+        {
+            this.matrixA = matrixA;
+            this.matrixB = matrixB;
+
+            this.tempMatrix = tempMatrix;
+
+            this.startRow = startRow;
+            this.endRow   = endRow;
+            this.startCol = startCol;
+            this.endCol   = endCol;
         }
 
         @Override
-        public void run() {
-            /*
-            TODO
-                Perform the calculation and store the final values in tempMatrixProduct
-            */
+        public void run ()
+        {
+            for (int i = startRow; i < endRow; i++)
+            {
+                for (int j = startCol; j < endCol; j++)
+                {
+                    int sum = 0;
+                    for (int k = 0; k < matrixB.size (); k++)
+                    {
+                        sum += matrixA.get (i).get (k) * matrixB.get (k).get (j);
+                    }
+                    tempMatrix.get (i).set (j, sum);
+                }
+            }
         }
     }
 
