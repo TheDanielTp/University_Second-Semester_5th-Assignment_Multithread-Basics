@@ -33,7 +33,28 @@ public class TaskScheduler
 
     public static ArrayList <String> doTasks (ArrayList <Task> tasks)
     {
-        return null;
+        ArrayList <String> finishedTasks = new ArrayList <> ();
+
+        // Sort tasks based on processing time (descending order)
+        tasks.sort ((t1, t2) -> t2.processingTime - t1.processingTime);
+
+        // Execute tasks
+        for (Task task : tasks)
+        {
+            Thread thread = new Thread (task);
+            thread.start ();
+            try
+            {
+                thread.join (); //wait for the task to finish
+                finishedTasks.add (task.taskName); //add task name to finished tasks
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace ();
+            }
+        }
+
+        return finishedTasks;
     }
 
     public static void main (String[] args)
